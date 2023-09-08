@@ -51,6 +51,14 @@ export default function Slideshow() {
       {imageHistory.map((imageData, index) => (
         <img key={index} src={`data:image/jpeg;base64, ${imageData.imageBase64}`} />
       ))}
+
+      <style jsx global>{`
+        html,
+        body {
+          color: white;
+          background-color: black;
+        }
+      `}</style>
     </div>
   );
 }
