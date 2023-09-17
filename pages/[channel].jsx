@@ -35,10 +35,14 @@ export default function Slideshow() {
   useEffect(() => {
     if (data) {
       setImageHistory((prevHistory) => {
-        // Limit the image history length to 16
+
+        console.log('Limiting the image history length to 16')
         const newHistory = [...prevHistory.slice(-15), data];
         return newHistory;
       });
+
+      console.log('scrolling to bottom')
+      window.scrollTo(0, document.body.scrollHeight);
     }
   }, [data]);
 
