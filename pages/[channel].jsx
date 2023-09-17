@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import useSWR from 'swr';
 
 function _arrayBufferToBase64(buffer) {
@@ -35,16 +35,20 @@ export default function Slideshow() {
   useEffect(() => {
     if (data) {
       setImageHistory((prevHistory) => {
-
         console.log('Limiting the image history length to 16')
         const newHistory = [...prevHistory.slice(-15), data];
         return newHistory;
       });
-
-      console.log('scrolling to bottom')
-      window.scrollTo(0, document.body.scrollHeight);
     }
   }, [data]);
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('imageHistory got updated so we are scrolling to bottom')
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 0)
+  }, [imageHistory])
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <p>No profile data</p>;
