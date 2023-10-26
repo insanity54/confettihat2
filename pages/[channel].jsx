@@ -56,7 +56,7 @@ export default function Slideshow() {
 
   return (
     <div>
-      <p>Confettihat for <Link href={`https://twitch.tv/${router.query.channel}`}>{router.query.channel}</Link></p>
+      <p>Confettihat for <Link target="_blank" href={`https://twitch.tv/${router.query.channel}`}>{router.query.channel}</Link></p>
       {imageHistory.map((imageData, index) => (
         <img key={index} src={`data:image/jpeg;base64, ${imageData.imageBase64}`} />
       ))}
