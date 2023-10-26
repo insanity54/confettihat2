@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect, useLayoutEffect } from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 
 function _arrayBufferToBase64(buffer) {
@@ -55,7 +56,7 @@ export default function Slideshow() {
 
   return (
     <div>
-      <p>Confettihat for {router.query.channel}</p>
+      <p>Confettihat for <Link href={`https://twitch.tv/${router.query.channel}`}>{router.query.channel}</Link></p>
       {imageHistory.map((imageData, index) => (
         <img key={index} src={`data:image/jpeg;base64, ${imageData.imageBase64}`} />
       ))}
